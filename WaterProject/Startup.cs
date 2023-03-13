@@ -37,6 +37,8 @@ namespace WaterProject
             services.AddScoped<IWaterProjectRepository, EFWaterProjectRepository>();
 
             services.AddRazorPages();
+
+            services.AddDistributedMemoryCache();
             services.AddSession();
         }
 
