@@ -22,8 +22,17 @@
             <tr>
                 <td>@i.Project.ProjectName</td>
                 <td>@i.Quantity</td>
-                <td>25</td>
-                <td>@(i.Quantity * 25)</td>
+                <td>$25.00</td>
+                <td>@((i.Quantity * 25).ToString("c"))</td>
+
+                <td class ="text-center">
+                    <form method="post" asp-page-handler="Remove">
+                        <input type="hidden" name="projectId" value="@i.Project.ProjectId" />
+                        <input type="hidden" name="returnUrl" value="@Model.ReturnUrl" />
+                        <button type="submit" class="btn btn-sm btn-danger">Remove</button>
+                    </form>
+                </td>
+
             </tr>
         }
     </tbody>
@@ -39,4 +48,5 @@
 
 <div>
     <a class="btn btn-primary" href="@Model.ReturnUrl">Continue Donating</a>
+    <a class="btn btn-primary" asp-controller="Donation" asp-action="Checkout">Checkout</a>
 </div>
